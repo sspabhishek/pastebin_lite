@@ -14,6 +14,16 @@ const ViewPaste = () => {
             try {
                 const response = await fetch(`/api/pastes/read/${id}`);
 
+                // Handle non-JSON responses (e.g. 404 HTML, 500 Error, or SPA Fallback)
+                const contentType = response.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    // If we get HTML (200 OK or otherwise), it usually means the API route failed 
+                    // and we got the index.html fallback or a Vercel error page.
+                    const text = await response.text();
+                    console.error("API Error (Non-JSON response):", text.slice(0, 200)); // Log for debugging
+                    throw new Error("API Route not found or returned invalid data");
+                }
+
                 if (!response.ok) {
                     const data = await response.json().catch(() => ({}));
                     throw new Error(data.error || 'Paste unavailable');
