@@ -1,5 +1,5 @@
-import { kv } from '../../lib/redis.js';
-import { nowMs } from '../../lib/utils.js';
+import { kv } from '../lib/redis.js';
+import { nowMs } from '../lib/utils.js';
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {
