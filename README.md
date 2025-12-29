@@ -42,8 +42,8 @@ This project uses **Redis** (via **Vercel KV**) for persistence.
 3. **Configure Environment**:
    Create a `.env` file (or let Vercel pull it) with:
    ```
-   KV_REST_API_URL=...
-   KV_REST_API_TOKEN=...
+   KV_REST_API_URL=... (or UPSTASH_REDIS_REST_URL)
+   KV_REST_API_TOKEN=... (or UPSTASH_REDIS_REST_TOKEN)
    ```
    *If using Vercel CLI linked to a project, `vercel env pull` works best.*
 
@@ -57,5 +57,4 @@ This project uses **Redis** (via **Vercel KV**) for persistence.
 ## Testing
 
 The application supports deterministic testing via headers:
-- `x-test-now-ms`: Overrides the server time for TTL checks (requires `TEST_MODE=1`).
-"# pastebin_lite" 
+- `x-test-now-ms`: Overrides the server time for TTL checks (requires `TEST_MODE=1`). 
