@@ -44,6 +44,7 @@ export default async function handler(req, res) {
             content: paste.content,
             remaining_views: null,
             expires_at: null,
+            created_at: paste.created_at, // Added for UI display
         };
 
         if (paste.max_views) {

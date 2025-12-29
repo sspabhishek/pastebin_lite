@@ -12,7 +12,8 @@ const ViewPaste = () => {
         // In Vercel dev or prod, /api rewrite handles this relative path.
         const fetchPaste = async () => {
             try {
-                const response = await fetch(`/api/pastes/read/${id}`);
+                // Switch to Public API so views are counted (per user report "views not updating")
+                const response = await fetch(`/api/pastes/${id}`);
 
                 // Handle non-JSON responses (e.g. 404 HTML, 500 Error, or SPA Fallback)
                 const contentType = response.headers.get("content-type");
