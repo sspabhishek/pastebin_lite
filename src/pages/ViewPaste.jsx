@@ -73,7 +73,7 @@ const ViewPaste = () => {
                     ← Create New
                 </Link>
                 <div className="text-xs text-gray-400">
-                    {paste.created_at && new Date(paste.created_at).toLocaleString()}
+                    {paste.created_at && new Date(Number(paste.created_at)).toLocaleString()}
                 </div>
             </div>
 
